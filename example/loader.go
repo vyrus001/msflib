@@ -1,7 +1,7 @@
 package main
 
 import (
-	"msflib"
+	"github.com/vyrus001/msflib"
 	"os"
 	"strings"
 )
