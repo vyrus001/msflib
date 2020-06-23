@@ -1,7 +1,6 @@
 package msflib
 
 import (
-	"bytes"
 	"encoding/binary"
 	"net"
 	"reflect"
@@ -25,10 +24,12 @@ func init() {
 // return a socket file descriptor as 4 bytes
 func getFDBytes(conn *net.TCPConn) []byte {
 	fd := reflect.ValueOf(*conn).FieldByName("fd")
-	handle := reflect.Indirect(fd).FieldByName("sysfd")
-	buff := new(bytes.Buffer)
-	binary.Write(buff, binary.LittleEndian, handle.Int())
-	return buff.Bytes()
+	handle := reflect.Indirect(fd).FieldByName("pfd").FieldByName("Sysfd")
+	socketFd := *(*uint32)(unsafe.Pointer(handle.UnsafeAddr()))
+
+	buff := make([]byte, 4)
+	binary.LittleEndian.PutUint32(buff, socketFd)
+	return buff
 }
 
 // call payload
