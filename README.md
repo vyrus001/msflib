@@ -1,7 +1,8 @@
 # msflib
 A golang library designed to interact with Metasploit
 
-TODO: dropping to shell or running ls from meterpreter breaks everything, fix this!
+Note: 32-bit and 64 bit payloads need to be compiled with corresponding compiling options.
+For example, 32-bit payloads need to be compiled into 32-bit payloads
 
 Example:
 ```
