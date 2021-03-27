@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	bananaphone "github.com/c-sto/BananaPhone/pkg/BananaPhone"
+	bananaphone "github.com/C-Sto/BananaPhone/pkg/BananaPhone"
 )
 
 var (
